@@ -59,8 +59,8 @@ void push(stack_t **stack, unsigned int line_number)
 void pall(stack_t **stack, unsigned int line_number)
 {
 	size_t len = stack_len(*stack);
-	(void) line_number;
 	stack_t *tmp;
+	(void) line_number;
 
 	if (len > 1)
 	{
