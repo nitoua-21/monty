@@ -22,33 +22,50 @@ stack_t *init_stack()
 	return (stack);
 }
 
+/**
+ * push -  pushes an element to the stack.
+ * @stack: pointer to stack top
+ * @line_number: line number in input file
+ */
 void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *node;
 
-	if (data == NULL || (strcmp(data, "0") != 0 && atoi(data) == 0))
+	if (opcode[1] == NULL || (strcmp(opcode[1], "0") != 0
+		&& atoi(opcode[1]) == 0))
 	{
 		fprintf(stderr, "L%d: usage: push integer", line_number);
+		free_opcode(opcode);
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
-	node = insert_dnodeint_at_index(stack, 1, atoi(data));
+	node = insert_dnodeint_at_index(stack, 1, atoi(opcode[1]));
 
 	if (node == NULL)
 	{
 		fprintf(stderr, "Error: malloc failedi\n");
 		free_stack(*stack);
+		free_opcode(opcode);
 		exit(EXIT_FAILURE);
 	}
 }
+
+/**
+ * pall -  rints all the values on the stack,
+ * starting from the top of the stack.
+ * @stack: pointer to stack top
+ * @line_number: line number in input file
+ */
 void pall(stack_t **stack, unsigned int line_number)
 {
 	size_t len = stack_len(*stack);
 	(void) line_number;
+	stack_t *tmp;
 
 	if (len > 1)
 	{
-		*stack = (*stack)->next;
-		print_stack(*stack);
+		tmp = *stack;
+		tmp = tmp->next;
+		print_stack(tmp);
 	}
 }

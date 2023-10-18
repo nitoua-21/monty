@@ -42,7 +42,7 @@ typedef struct instruction_s
 } instruction_t;
 
 /* Gobal variables */
-extern char *data;
+extern char **opcode;
 
 /* function prototypes */
 void (*f)(stack_t **, unsigned int);
@@ -51,6 +51,7 @@ void (*get_opcode_func(char *str))(stack_t **, unsigned int);
 char **parse_line(char *);
 void push(stack_t **, unsigned int);
 void pall(stack_t **, unsigned int);
+void free_opcode(char **);
 
 /* Linked list funtions*/
 size_t print_stack(const stack_t *h);
