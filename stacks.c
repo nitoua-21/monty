@@ -43,6 +43,12 @@ void push(stack_t **stack, unsigned int line_number)
 }
 void pall(stack_t **stack, unsigned int line_number)
 {
-	*stack = (*stack)->next;
-	print_stack(*stack);
+	size_t len = stack_len(*stack);
+	(void) line_number;
+
+	if (len > 1)
+	{
+		*stack = (*stack)->next;
+		print_stack(*stack);
+	}
 }

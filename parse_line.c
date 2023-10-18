@@ -17,8 +17,9 @@ char **parse_line(char *str)
 	token = strtok(str, " ");
 	while (token != NULL && i < 2)
 	{
-		tokens[i++] = strdup(token);
+		tokens[i] = strdup(token);
 		token = strtok(NULL, " ");
+		i++;
 	}
 	tokens[i] = NULL;
 
