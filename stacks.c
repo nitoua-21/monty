@@ -102,5 +102,11 @@ void pop(stack_t **stack, unsigned int line_number)
 		free_opcode(opcode);
 		exit(EXIT_FAILURE);
 	}
-	delete_dnodeint_at_index(stack, 1);
+	if (delete_dnodeint_at_index(stack, 1) == -1)
+	{
+		fprintf(stderr, "Error: malloc failedi\n");
+		free_stack(*stack);
+		free_opcode(opcode);
+		exit(EXIT_FAILURE);
+	}
 }
