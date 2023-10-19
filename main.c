@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
 	while (fgets(line, sizeof(line), file) != NULL)
 	{	line[strlen(line) - 1] = '\0';
 		opcode = parse_line(line);
-		if (opcode[0] == NULL)
+		if (opcode[0] == NULL || opcode[0][0] == '#')
 		{
 			free_opcode(opcode), line_number++;
 			continue;
