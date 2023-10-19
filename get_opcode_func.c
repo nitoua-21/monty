@@ -18,6 +18,12 @@ void (*get_opcode_func(char *str))(stack_t **, unsigned int)
 		{"nop", nop},
 		{"swap", swap},
 		{"add", add},
+		{"sub", sub},
+		{"div", _div},
+		{"mul", mul},
+		{"mod", mod},
+		{"pchar", pchar},
+		{"pstr", pstr},
 		{NULL, NULL}
 	};
 	int i = 0;

@@ -81,3 +81,26 @@ void nop(stack_t **stack, unsigned int line_number)
 	(void) stack;
 	(void) line_number;
 }
+ 
+/**
+ * sub - subtracts top two elements into the second top element 
+ * and pops the top.
+ * @stack: address of stack pointer
+ * @line_number: line number
+ */
+void sub(stack_t **stack, unsigned int line_number)
+{
+	stack_t *tmp = *stack;
+
+	tmp = tmp->next;
+	if (stack_len(tmp) < 2)
+	{
+		fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
+		free_stack(*stack);
+		free_opcode(opcode);
+		exit(EXIT_FAILURE);
+	}
+
+	tmp->next->n = tmp->next->n - tmp->n;
+	pop(stack, line_number);
+}
