@@ -87,20 +87,14 @@ void pint(stack_t **stack, unsigned int line_number)
 	printf("%d\n", (*stack)->next->n);
 }
 
-/**
- * pop - removes the top element of the stack.
- * @stack: pointer to stack top
- * @line_number: line number in input file
- */
-void pop(stack_t **stack, unsigned int line_number)
-{
-
-	if ((*stack)->next == NULL)
-	{
-		fprintf(stderr, "L%d: can't pop an stack empty\n", line_number);
-		free_stack(*stack);
-		free_opcode(opcode);
-		exit(EXIT_FAILURE);
-	}
-	delete_dnodeint_at_index(stack, 1);
-}
+/*void pop(stack_t **stack, unsigned int line_number)*/
+/*{*/
+/*	if ((*stack)->next == NULL)*/
+/*	{*/
+/*		fprintf(stderr, "L%d: can't pop an stack empty\n", line_number);*/
+/*		free_stack(*stack);*/
+/*		free_opcode(opcode);*/
+/*		exit(EXIT_FAILURE);*/
+/*	}*/
+/*	delete_dnodeint_at_index(stack, 1);*/
+/*}*/
