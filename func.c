@@ -81,9 +81,9 @@ void nop(stack_t **stack, unsigned int line_number)
 	(void) stack;
 	(void) line_number;
 }
- 
+
 /**
- * sub - subtracts top two elements into the second top element 
+ * sub - subtracts top two elements into the second top element
  * and pops the top.
  * @stack: address of stack pointer
  * @line_number: line number
