@@ -45,7 +45,7 @@ typedef struct instruction_s
 extern char **opcode;
 
 /* function prototypes */
-void (*f)(stack_t **, unsigned int);
+/*void (*f)(stack_t **, unsigned int);*/
 stack_t *init_stack();
 void (*get_opcode_func(char *str))(stack_t **, unsigned int);
 char **parse_line(char *);
@@ -53,6 +53,9 @@ void push(stack_t **, unsigned int);
 void pall(stack_t **, unsigned int);
 void pint(stack_t **, unsigned int);
 void pop(stack_t **, unsigned int);
+void nop(stack_t **, unsigned int);
+void add(stack_t **, unsigned int);
+void swap(stack_t **, unsigned int);
 void free_opcode(char **);
 
 /* Linked list funtions*/
