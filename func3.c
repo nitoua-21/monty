@@ -49,3 +49,12 @@ void rotr(stack_t **stack, unsigned int line_number)
 
 	free(tmp);
 }
+
+/**
+ * change_mode - changes the mode of interpreter.
+ * @stack: address of stack pointer.
+ * @mode: stack mode.
+ */
+void change_mode(stack_t **stack, int mode)
+{
+
