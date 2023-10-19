@@ -31,8 +31,7 @@ void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *node;
 
-	if (opcode[1] == NULL || (strcmp(opcode[1], "0") != 0
-		&& atoi(opcode[1]) == 0))
+	if (opcode[1] == NULL || (is_number(opcode[1]) == 0))
 	{
 		fprintf(stderr, "L%d: usage: push integer", line_number);
 		free_opcode(opcode);

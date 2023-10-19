@@ -57,6 +57,8 @@ void nop(stack_t **, unsigned int);
 void add(stack_t **, unsigned int);
 void swap(stack_t **, unsigned int);
 void free_opcode(char **);
+int is_digit(char);
+int is_number(char *);
 
 /* Linked list funtions*/
 size_t print_stack(const stack_t *h);
