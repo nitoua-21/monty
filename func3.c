@@ -1,4 +1,4 @@
-#include "monty.h"
+nclude "monty.h"
 /**
  * rotl - rotates stack to the top.
  * @stack: address of stack pointer
@@ -51,10 +51,25 @@ void rotr(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * change_mode - changes the mode of interpreter.
- * @stack: address of stack pointer.
- * @mode: stack mode.
+ * stack - sets the format of the data to a stack (LIFO).
+ * @stack: address of stack pointer
+ * @line_number: line number
  */
-void change_mode(stack_t **stack, int mode)
+void stack(stack_t **stack, unsigned int line_number)
 {
+	(void)line_number;
 
+	(*stack)->n = STACK;
+}
+
+/**
+ * queue - sets the format of the data to a queue (FIFO).
+ * @stack: address of stack pointer
+ * @line_number: line number
+ */
+void queue(stack_t **stack, unsigned int line_number)
+{
+	(void)line_number;
+
+	(*stack)->n = QUEUE;
+}
