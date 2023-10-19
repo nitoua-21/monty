@@ -69,3 +69,20 @@ void pall(stack_t **stack, unsigned int line_number)
 		print_stack(tmp);
 	}
 }
+
+/**
+ * pint - prints the value at the top of the stack
+ * @stack: pointer to stack top
+ * @line_number: line number in input file
+ */
+void pint(stack_t **stack, unsigned int line_number)
+{
+	if ((*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		free_stack(*stack);
+		free_opcode(opcode);
+		exit(EXIT_FAILURE);
+	}
+	printf("%d\n", (*stack)->next->n);
+}

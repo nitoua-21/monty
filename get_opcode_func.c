@@ -13,6 +13,7 @@ void (*get_opcode_func(char *str))(stack_t **, unsigned int)
 	instruction_t ins[] = {
 		{"push", push},
 		{"pall", pall},
+		{"pint", pint},
 		{NULL, NULL}
 	};
 	int i = 0;

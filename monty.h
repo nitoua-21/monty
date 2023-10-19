@@ -51,6 +51,7 @@ void (*get_opcode_func(char *str))(stack_t **, unsigned int);
 char **parse_line(char *);
 void push(stack_t **, unsigned int);
 void pall(stack_t **, unsigned int);
+void pint(stack_t **, unsigned int);
 void free_opcode(char **);
 
 /* Linked list funtions*/
