@@ -130,7 +130,7 @@ void pstr(stack_t **stack, unsigned int line_number)
 
 	while (top)
 	{
-		if (top->n > 127 || top->n < 0 || top->n == 0)
+		if (top->n > 127 || top->n <= 0)
 			break;
 
 		printf("%c", (char)top->n);
