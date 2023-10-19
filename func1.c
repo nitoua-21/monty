@@ -104,7 +104,7 @@ void pchar(stack_t **stack, unsigned int line_number)
 
 	top = top->next;
 
-	if (top->n >= 255 || top->n <= 0)
+	if (top->n > 127 || top->n < 0)
 	{
 		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
 		free_stack(*stack);
@@ -130,7 +130,7 @@ void pstr(stack_t **stack, unsigned int line_number)
 
 	while (top)
 	{
-		if (top->n > 255 || top->n < 0 || top->n == 0)
+		if (top->n > 127 || top->n < 0 || top->n == 0)
 			break;
 
 		printf("%c", top->n);
