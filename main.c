@@ -34,8 +34,7 @@ int main(int argc, char *argv[])
 	}
 	stack = init_stack();
 	while (fgets(line, sizeof(line), file) != NULL)
-	{
-		line[strlen(line) - 1] = '\0';
+	{	line[strlen(line) - 1] = '\0';
 		opcode = parse_line(line);
 		if (opcode[0] == NULL)
 		{
@@ -43,6 +42,8 @@ int main(int argc, char *argv[])
 			continue;
 		}
 		opcode_func = get_opcode_func(opcode[0]);
+		if (opcode_func == push && !(is_number(opcode[1])))
+			fclose(file);
 		if (!opcode_func)
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode[0]);

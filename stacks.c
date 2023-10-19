@@ -42,7 +42,7 @@ void push(stack_t **stack, unsigned int line_number)
 
 	if (node == NULL)
 	{
-		fprintf(stderr, "Error: malloc failedi\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		free_stack(*stack);
 		free_opcode(opcode);
 		exit(EXIT_FAILURE);
