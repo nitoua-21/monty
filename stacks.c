@@ -38,7 +38,10 @@ void push(stack_t **stack, unsigned int line_number)
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
-	node = insert_dnodeint_at_index(stack, 1, atoi(opcode[1]));
+	if ((*stack)->n == 0)
+		node = insert_dnodeint_at_index(stack, 1, atoi(opcode[1]));
+	else
+		node = add_dnodeint_end(stack, atoi(opcode[1]));
 
 	if (node == NULL)
 	{

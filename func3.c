@@ -49,3 +49,27 @@ void rotr(stack_t **stack, unsigned int line_number)
 
 	free(tmp);
 }
+
+/**
+ * stack - sets the format of the data to a stack (LIFO).
+ * @stack: address of stack pointer
+ * @line_number: line number
+ */
+void stack(stack_t **stack, unsigned int line_number)
+{
+	(void)line_number;
+
+	(*stack)->n = STACK;
+}
+
+/**
+ * queue - sets the format of the data to a queue (FIFO).
+ * @stack: address of stack pointer
+ * @line_number: line number
+ */
+void queue(stack_t **stack, unsigned int line_number)
+{
+	(void)line_number;
+
+	(*stack)->n = QUEUE;
+}
