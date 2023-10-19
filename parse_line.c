@@ -14,11 +14,11 @@ char **parse_line(char *str)
 	tokens = malloc(sizeof(char *) * 3);
 	if (tokens == NULL)
 		return (NULL);
-	token = strtok(str, " ");
+	token = strtok(str, " \t");
 	while (token != NULL && i < 2)
 	{
 		tokens[i] = strdup(token);
-		token = strtok(NULL, " ");
+		token = strtok(NULL, " \t");
 		i++;
 	}
 	tokens[i] = NULL;

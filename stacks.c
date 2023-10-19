@@ -31,8 +31,7 @@ void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *node;
 
-	if (opcode[1] == NULL || (strcmp(opcode[1], "0") != 0
-		&& atoi(opcode[1]) == 0))
+	if (opcode[1] == NULL || (is_number(opcode[1]) == 0))
 	{
 		fprintf(stderr, "L%d: usage: push integer", line_number);
 		free_opcode(opcode);
@@ -43,7 +42,7 @@ void push(stack_t **stack, unsigned int line_number)
 
 	if (node == NULL)
 	{
-		fprintf(stderr, "Error: malloc failedi\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		free_stack(*stack);
 		free_opcode(opcode);
 		exit(EXIT_FAILURE);
@@ -86,15 +85,3 @@ void pint(stack_t **stack, unsigned int line_number)
 	}
 	printf("%d\n", (*stack)->next->n);
 }
-
-/*void pop(stack_t **stack, unsigned int line_number)*/
-/*{*/
-/*	if ((*stack)->next == NULL)*/
-/*	{*/
-/*		fprintf(stderr, "L%d: can't pop an stack empty\n", line_number);*/
-/*		free_stack(*stack);*/
-/*		free_opcode(opcode);*/
-/*		exit(EXIT_FAILURE);*/
-/*	}*/
-/*	delete_dnodeint_at_index(stack, 1);*/
-/*}*/

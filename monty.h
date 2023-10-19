@@ -1,6 +1,7 @@
 #ifndef MONTY_H
 #define MONTY_H
 
+#define _GNU_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -65,6 +66,8 @@ void pchar(stack_t **, unsigned int);
 void rotr(stack_t **, unsigned int);
 void rotl(stack_t **, unsigned int);
 void free_opcode(char **);
+int is_digit(char);
+int is_number(char *);
 
 /* Linked list funtions*/
 size_t print_stack(const stack_t *h);
