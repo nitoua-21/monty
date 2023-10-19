@@ -1,5 +1,4 @@
 queue
-push 1
 push 2
 push 3
 pall
@@ -13,4 +12,5 @@ pall
 queue
 push 11111
 add
+push 2
 pall
