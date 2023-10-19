@@ -112,7 +112,7 @@ void pchar(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	printf("%c\n", top->n);
+	printf("%c\n", (char)top->n);
 }
 
 /**
@@ -133,7 +133,7 @@ void pstr(stack_t **stack, unsigned int line_number)
 		if (top->n > 127 || top->n < 0 || top->n == 0)
 			break;
 
-		printf("%c", top->n);
+		printf("%c", (char)top->n);
 		top = top->next;
 	}
 
