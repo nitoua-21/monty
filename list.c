@@ -1,38 +1,6 @@
 #include "monty.h"
 
 /**
- * add_dnodeint -  adds a new node at the beginning of a stack_t list.
- * @head: pointer to head node pointer
- * @n: data
- *
- * Return: ddress of the new element, or NULL if it failed
- */
-stack_t *add_dnodeint(stack_t **head, const int n)
-{
-	stack_t *node;
-
-	if (head == NULL)
-		return (NULL);
-	node = malloc(sizeof(stack_t));
-	if (node == NULL)
-		return (NULL);
-	node->n = n;
-	node->next = NULL;
-	node->prev = NULL;
-	/*If head node*/
-	if (*head == NULL)
-	{
-		*head = node;
-		return (*head);
-	}
-	(*head)->prev = node;
-	node->next = *head;
-	*head = node;
-
-	return (node);
-}
-
-/**
  * add_dnodeint_end -  adds a new node at the end of a stack_t list.
  * @head: pointer to head node pointer
  * @n: data
@@ -84,78 +52,98 @@ void free_stack(stack_t *head)
 }
 
 /**
- * delete_dnodeint_at_index - deletes the node at index
- * of a stack_t linked list.
- * @head: pointer to head node pointer
- * @index:  index of the node that should be deleted.
+ * print_stack - prints all the elements of a stack_t list.
+ * @h: pointer to header node
  *
- * Return: 1 if it succeeded, -1 if it failed
+ * Return: the number of nodes
  */
-int delete_dnodeint_at_index(stack_t **head, unsigned int index)
+size_t print_stack(const stack_t *h)
 {
-	stack_t *tmp, *tmp2;
-	unsigned int i = 0;
+	size_t count = 0;
 
-	if (head == NULL || *head == NULL)
-		return (-1);
+	if (h == NULL)
+		return (0);
 
-	tmp = *head;
-	if (index == 0)
+	while (h != NULL)
 	{
-		if (tmp->next != NULL)
-		{
-			tmp->next->prev = NULL;
-			*head = tmp->next;
-			free(tmp);
-			return (1);
-		}
-		free(tmp);
-		*head = NULL;
-		return (1);
+		printf("%d\n", h->n);
+		count++;
+		h = h->next;
 	}
-	while (tmp != NULL && i < index)
-	{
-		if (i == index - 1)
-		{
-			tmp2 = tmp->next;
-			if (tmp2->next != NULL)
-			{
-				tmp->next = tmp2->next;
-				tmp2->next->prev = tmp;
-			}
-			else
-				tmp->next = NULL;
-			free(tmp2);
-			return (1);
-		}
-		i++;
-		tmp = tmp->next;
-	}
-	return (-1);
+
+	return (count);
 }
 
 /**
- * get_dnodeint_at_index - finds the nth node of a stack_t linked list.
- * @head: pointer to head node
- * @index: index of the node
+ * stack_len - counts the number of elements in a linked stack_t list.
+ * @h: pointer to head node
  *
- * Return: the nth node of a stack_t linked list.
+ * Return: number of elements in a linked stack_t list.
  */
-stack_t *get_dnodeint_at_index(stack_t *head, unsigned int index)
+size_t stack_len(const stack_t *h)
 {
-	unsigned int i = 0;
+	size_t len = 0;
 
-	if (head == NULL)
-		return (NULL);
+	if (h == NULL)
+		return (0);
 
-	while (head != NULL)
+	while (h != NULL)
 	{
-		if (i == index)
-			return (head);
-		if (i > index)
-			return (NULL);
-		head = head->next;
-		i++;
+		len++;
+		h = h->next;
 	}
+
+	return (len);
+}
+
+/**
+ * insert_dnodeint_at_index -  inserts a new node at a given position.
+ * @h: pointer to head node pointer.
+ * @idx: index of the list where the new node should be added.
+ * @n: data
+ *
+ * Return: the address of the new node, or NULL if it failed
+ */
+stack_t *insert_dnodeint_at_index(stack_t **h, unsigned int idx, int n)
+{
+	stack_t *node, *tmp;
+	unsigned int step = 0;
+
+	if (h == NULL)
+		return (NULL);
+	if (*h == NULL && idx > 0)
+		return (NULL);
+	node = malloc(sizeof(stack_t));
+	if (node == NULL)
+		return (NULL);
+	node->n = n;
+	node->next = NULL, node->prev = NULL;
+	if (*h == NULL && idx == 0)
+	{
+		*h = node;
+		return (node);
+	}
+	tmp = *h;
+	if (idx == 0)
+	{
+		node->next = tmp;
+		tmp->prev = node;
+		*h = node;
+		return (node);
+	}
+	while (tmp != NULL && step < idx)
+	{
+		if (step == idx - 1)
+		{
+			node->prev = tmp, node->next = tmp->next;
+			if (tmp->next != NULL)
+				tmp->next->prev = node;
+			tmp->next = node;
+			return (node);
+		}
+		step++;
+		tmp = tmp->next;
+	}
+	free(node);
 	return (NULL);
 }

@@ -74,10 +74,8 @@ int is_number(char *);
 /* Linked list funtions*/
 size_t print_stack(const stack_t *h);
 size_t stack_len(const stack_t *h);
-stack_t *add_dnodeint(stack_t **head, const int n);
 stack_t *add_dnodeint_end(stack_t **head, const int n);
 void free_stack(stack_t *head);
 stack_t *insert_dnodeint_at_index(stack_t **h, unsigned int idx, int n);
-int delete_dnodeint_at_index(stack_t **head, unsigned int index);
 
 #endif
