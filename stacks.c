@@ -33,7 +33,7 @@ void push(stack_t **stack, unsigned int line_number)
 
 	if (opcode[1] == NULL || (is_number(opcode[1]) == 0))
 	{
-		fprintf(stderr, "L%d: usage: push integer", line_number);
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		free_opcode(opcode);
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
