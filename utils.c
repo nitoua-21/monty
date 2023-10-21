@@ -38,6 +38,8 @@ int is_number(char *str)
 
 	if (str == NULL || str[0] == '\0')
 		return (0);
+	if (str[0] == '-')
+		str++;
 	for (i = 0; str[i] != '\0'; i++)
 		if (is_digit(str[i]) == 0)
 			return (0);
